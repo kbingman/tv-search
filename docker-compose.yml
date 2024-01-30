@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  vespa:
+    image: vespaengine/vespa
+    hostname: vespa-container
+    ports:
+      - "8080:8080"
+      - "19071:19071"
+    volumes:
+      - vespa:/opt/vespa/var
+      - vespa:/opt/vespa/logs
+volumes:
+  vespa:
+    driver: local

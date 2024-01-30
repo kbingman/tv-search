@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "hello-rust"
+version = "0.1.0"
+authors = ["Keith Bingman <keith@keithbingman.com>"]
+description = "TV RAG Application"
+
+[[trigger.http]]
+route = "/..."
+component = "hello-rust"
+
+[component.hello-rust]
+source = "target/wasm32-wasi/release/hello_rust.wasm"
+allowed_outbound_hosts = []
+[component.hello-rust.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
